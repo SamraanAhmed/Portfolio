@@ -167,18 +167,68 @@ section {
 }
 
 /* Skills Grid */
-.skills-grid {
+
+.parent {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
 }
 
+.div1 {
+  grid-area: 1 / 1 / 2 / 2;
+}
+.div2 {
+  grid-area: 2 / 1 / 3 / 2;
+}
+.div3 {
+  grid-area: 1 / 2 / 2 / 3;
+}
+.div4 {
+  grid-area: 2 / 2 / 3 / 3;
+}
+.div5 {
+  grid-area: 1 / 3 / 2 / 4;
+}
+.div6 {
+  grid-area: 2 / 3 / 3 / 4;
+}
 .skill-item {
   padding: 1.5rem;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border, #ccc); /* Default border color */
   border-radius: 0.5rem;
   text-align: center;
-  transition: transform 0.3s;
+  transition: transform 0.3s, background-color 0.3s, color 0.3s;
+  position: relative;
+  overflow: hidden;
+  width: 150px;
+}
+
+.skill-item:hover {
+  transform: scale(1.05);
+  background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
+  color: #fff; /* Change text color to white */
+}
+
+.skill-item:hover::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 30%;
+  background-color: rgba(0, 173, 181, 0.5); /* Glow color */
+  transform: translate(-50%, -50%);
+  animation: glow 0.6s ease-out forwards;
+}
+
+@keyframes glow {
+  to {
+    width: 200%;
+    height: 200%;
+  }
 }
 
 .skill-item:hover {
@@ -188,8 +238,23 @@ section {
 /* Projects Grid */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}
+
+.card1 {
+  grid-area: 1 / 1 / 2 / 2;
+}
+.card2 {
+  grid-area: 1 / 2 / 2 / 3;
+}
+.card3 {
+  grid-area: 1 / 3 / 2 / 4;
+}
+.card4 {
+  grid-area: 1 / 4 / 2 / 5;
 }
 
 .project-card {
@@ -200,6 +265,7 @@ section {
   transition: transform 0.3s;
   position: relative;
   overflow: hidden;
+  width: 330px;
 }
 
 .project-card:hover {
@@ -243,7 +309,11 @@ section {
   border-radius: 0.25rem;
   color: var(--text);
 }
-
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
 .contact-form button {
   background: var(--accent);
   color: var(--bg);
