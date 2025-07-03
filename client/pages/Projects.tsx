@@ -4,105 +4,105 @@ import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github, Zap, Users, TrendingUp } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 
+// Import images with relative paths
+import XeeTechImage from "@/components/Images/XeeTechlogo.png";
+import DataVizImage from "@/components/Images/ImageBot.png";
+import PortfolioTemplateImage from "@/components/Images/ImageBot.png";
+import CSSPlaygroundImage from "@/components/Images/ImageBot.png";
+
 const projects = [
   {
-    title: "E-Commerce UI Kit",
+    title: "XeeTech",
     description:
-      "A comprehensive React component library for e-commerce applications featuring responsive design, accessibility compliance, and beautiful animations. Built with TypeScript and Storybook.",
-    image: "/api/placeholder/600/400",
-    technologies: [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Storybook",
-      "Framer Motion",
-      "Jest",
-    ],
+      "A web application build for a Digital Software House, dealing with SaaS products and services. It features a modern design, responsive layout, and showcases various projects and services offered by the company.",
+    image: XeeTechImage,
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Netlify"],
     features: [
-      "50+ reusable components",
-      "Mobile-first responsive design",
-      "WCAG 2.1 AA accessibility",
+      "SaaS product showcase",
+      "Project portfolio",
+      "Mobile responsive design",
       "Dark/light theme support",
     ],
     metrics: {
       icon: TrendingUp,
       label: "40% faster development",
     },
-    liveUrl: "https://ui-kit-demo.com",
-    githubUrl: "https://github.com/samraanahmed/ecommerce-ui-kit",
+    liveUrl: "https://xeetech.xyz",
+    // githubUrl: "https://github.com/samraanahmed/ecommerce-ui-kit",
     featured: true,
   },
-  {
-    title: "Interactive Data Visualization",
-    description:
-      "A dynamic dashboard showcasing complex data through beautiful, interactive charts and graphs. Features smooth animations, filtering capabilities, and responsive design.",
-    image: "/api/placeholder/600/400",
-    technologies: [
-      "Vue.js",
-      "D3.js",
-      "Chart.js",
-      "CSS Grid",
-      "Sass",
-      "Webpack",
-    ],
-    features: [
-      "Interactive chart components",
-      "Real-time data updates",
-      "Responsive grid layout",
-      "Custom animations",
-    ],
-    metrics: {
-      icon: Users,
-      label: "98% user satisfaction",
-    },
-    liveUrl: "https://data-viz-demo.com",
-    githubUrl: "https://github.com/samraanahmed/data-visualization",
-  },
-  {
-    title: "Portfolio Website Template",
-    description:
-      "A modern, minimalist portfolio template built with React and Next.js. Features smooth scrolling, parallax effects, and optimized performance for creative professionals.",
-    image: "/api/placeholder/600/400",
-    technologies: [
-      "Next.js",
-      "React",
-      "Styled Components",
-      "GSAP",
-      "Vercel",
-      "TypeScript",
-    ],
-    features: [
-      "Smooth scroll animations",
-      "Parallax effects",
-      "SEO optimized",
-      "Performance score 95+",
-    ],
-    metrics: {
-      icon: Zap,
-      label: "95+ Lighthouse score",
-    },
-    liveUrl: "https://portfolio-template-demo.com",
-    githubUrl: "https://github.com/samraanahmed/portfolio-template",
-  },
-  {
-    title: "CSS Animation Playground",
-    description:
-      "An interactive playground for experimenting with CSS animations and transitions. Features live code editing, animation presets, and export functionality.",
-    image: "/api/placeholder/600/400",
-    technologies: ["Vanilla JS", "CSS3", "HTML5", "Monaco Editor", "Sass"],
-    features: [
-      "Live CSS editing",
-      "Animation presets library",
-      "Export to CodePen",
-      "Mobile-friendly interface",
-    ],
-    metrics: {
-      icon: Users,
-      label: "10K+ animations created",
-    },
-    liveUrl: "https://css-playground-demo.com",
-    githubUrl: "https://github.com/samraanahmed/css-animation-playground",
-  },
+  // Uncomment the following projects to include them in the showcase
+  // {
+  //   title: "Interactive Data Visualization",
+  //   description:
+  //     "A dynamic dashboard showcasing complex data through beautiful, interactive charts and graphs. Features smooth animations, filtering capabilities, and responsive design.",
+  //   image: DataVizImage,
+  //   technologies: [
+  //     "Vue.js",
+  //     "D3.js",
+  //     "Chart.js",
+  //     "CSS Grid",
+  //     "Sass",
+  //     "Webpack",
+  //   ],
+  //   features: [
+  //     "Interactive chart components",
+  //     "Real-time data updates",
+  //     "Responsive grid layout",
+  //     "Custom animations",
+  //   ],
+  //   metrics: {
+  //     icon: Users,
+  //     label: "98% user satisfaction",
+  //   },
+  //   liveUrl: "https://data-viz-demo.com",
+  //   githubUrl: "https://github.com/samraanahmed/data-visualization",
+  // },
+  // {
+  //   title: "Portfolio Website Template",
+  //   description:
+  //     "A modern, minimalist portfolio template built with React and Next.js. Features smooth scrolling, parallax effects, and optimized performance for creative professionals.",
+  //   image: PortfolioTemplateImage,
+  //   technologies: [
+  //     "Next.js",
+  //     "React",
+  //     "Styled Components",
+  //     "GSAP",
+  //     "Vercel",
+  //     "TypeScript",
+  //   ],
+  //   features: [
+  //     "Smooth scroll animations",
+  //     "Parallax effects",
+  //     "SEO optimized",
+  //     "Performance score 95+",
+  //   ],
+  //   metrics: {
+  //     icon: Zap,
+  //     label: "95+ Lighthouse score",
+  //   },
+  //   liveUrl: "https://portfolio-template-demo.com",
+  //   githubUrl: "https://github.com/samraanahmed/portfolio-template",
+  // },
+  // {
+  //   title: "CSS Animation Playground",
+  //   description:
+  //     "An interactive playground for experimenting with CSS animations and transitions. Features live code editing, animation presets, and export functionality.",
+  //   image: CSSPlaygroundImage,
+  //   technologies: ["Vanilla JS", "CSS3", "HTML5", "Monaco Editor", "Sass"],
+  //   features: [
+  //     "Live CSS editing",
+  //     "Animation presets library",
+  //     "Export to CodePen",
+  //     "Mobile-friendly interface",
+  //   ],
+  //   metrics: {
+  //     icon: Users,
+  //     label: "10K+ animations created",
+  //   },
+  //   liveUrl: "https://css-playground-demo.com",
+  //   githubUrl: "https://github.com/samraanahmed/css-animation-playground",
+  // },
 ];
 
 export default function Projects() {
@@ -137,15 +137,24 @@ export default function Projects() {
                 )}
                 <div className="grid lg:grid-cols-2 gap-8 p-8">
                   {/* Project Image */}
-                  <div className="relative overflow-hidden rounded-lg bg-muted">
-                    <div className="aspect-video bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
-                      <div className="text-6xl font-bold text-primary/20">
-                        {project.title
-                          .split(" ")
-                          .map((word) => word[0])
-                          .join("")}
+                  <div className="relative overflow-hidden rounded-lg flex items-center justify-center">
+                    {project.image ? (
+                      <img
+                        src={project.image}
+                        alt={`${project.title} screenshot`}
+                        className="w-full object-contain aspect-video max-h-[300px]"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="aspect-video bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
+                        <div className="text-6xl font-bold text-primary/20">
+                          {project.title
+                            .split(" ")
+                            .map((word) => word[0])
+                            .join("")}
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
 
                   {/* Project Details */}
@@ -193,12 +202,12 @@ export default function Projects() {
                     </div>
 
                     {/* Metrics */}
-                    <div className="flex items-center space-x-2 text-primary">
+                    {/* <div className="flex items-center space-x-2 text-primary">
                       <project.metrics.icon className="w-5 h-5" />
                       <span className="font-semibold">
                         {project.metrics.label}
                       </span>
-                    </div>
+                    </div> */}
 
                     {/* Action Buttons */}
                     <div className="flex space-x-4 pt-4">
@@ -210,10 +219,10 @@ export default function Projects() {
                           className="flex items-center"
                         >
                           <ExternalLink className="w-4 h-4 mr-2" />
-                          Live Demo
+                          Live
                         </a>
                       </Button>
-                      <Button variant="outline" asChild>
+                      {/* <Button variant="outline" asChild>
                         <a
                           href={project.githubUrl}
                           target="_blank"
@@ -223,7 +232,7 @@ export default function Projects() {
                           <Github className="w-4 h-4 mr-2" />
                           Source Code
                         </a>
-                      </Button>
+                      </Button> */}
                     </div>
                   </div>
                 </div>
