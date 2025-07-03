@@ -242,10 +242,16 @@ export default function Projects() {
 
           {/* View More Projects CTA */}
           <div className="text-center mt-12">
-            <Button variant="outline" size="lg" className="px-8">
-              <Github className="w-5 h-5 mr-2" />
-              View All Projects on GitHub
-            </Button>
+            <a
+              href="https://github.com/SamraanAhmed"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="outline" size="lg" className="px-8">
+                <Github className="w-5 h-5 mr-2" />
+                View All My Projects on GitHub
+              </Button>
+            </a>
           </div>
         </div>
       </div>
