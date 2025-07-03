@@ -7,22 +7,22 @@ const highlights = [
   {
     icon: Code,
     title: "Modern Frameworks",
-    description: "React, Vue.js, Angular",
+    description: "React",
   },
   {
     icon: Globe,
     title: "Responsive Design",
-    description: "Mobile-first, CSS, Sass",
+    description: "CSS, Tailwind CSS, Figma",
   },
   {
     icon: Server,
-    title: "Build Tools",
-    description: "Webpack, Vite, Parcel",
+    title: "Deployment Platforms",
+    description: "Netlify, Vercel",
   },
   {
     icon: Database,
     title: "Performance",
-    description: "Optimization, SEO, A11y",
+    description: "Optimization, SEO",
   },
 ];
 
@@ -30,13 +30,15 @@ const coreSkills = [
   "JavaScript",
   "TypeScript",
   "React",
-  "Vue.js",
-  "CSS/Sass",
+  "HTML / CSS",
   "Tailwind CSS",
-  "Webpack",
   "Figma",
-  "Git",
+  "Git/GitHub",
   "Responsive Design",
+  "Python",
+  "C++",
+  "REST APIs",
+  "UI/UX Design",
 ];
 
 export default function About() {
@@ -57,24 +59,17 @@ export default function About() {
               <div className="prose prose-lg max-w-none text-muted-foreground">
                 <p className="text-xl leading-relaxed">
                   I'm a passionate Frontend Web Developer with{" "}
-                  <span className="text-primary font-semibold">2+ years</span>{" "}
+                  <span className="text-primary font-semibold">3+ years</span>{" "}
                   of experience through internships and personal projects. I
                   specialize in creating beautiful, responsive, and accessible
                   user interfaces with modern frontend technologies.
                 </p>
                 <p className="text-lg leading-relaxed">
                   My expertise focuses on crafting pixel-perfect user interfaces
-                  using React, Vue.js, and modern CSS frameworks. I'm passionate
-                  about responsive design, performance optimization,
-                  accessibility, and creating delightful user experiences that
-                  engage and convert.
-                </p>
-                <p className="text-lg leading-relaxed">
-                  When I'm not coding, you'll find me exploring new design
-                  trends, contributing to open-source UI libraries, or learning
-                  about the latest frontend frameworks and tools. I believe in
-                  the power of great design and clean code to create meaningful
-                  digital experiences.
+                  using React, and modern CSS frameworks. I'm passionate about
+                  responsive design, performance optimization, accessibility,
+                  and creating delightful user experiences that engage and
+                  convert.
                 </p>
               </div>
 

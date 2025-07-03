@@ -6,9 +6,9 @@ import { Layout } from "@/components/layout/Layout";
 const experiences = [
   {
     title: "Frontend Development Intern",
-    company: "DesignTech Studios",
+    company: "Developers Hub",
     location: "Rawalpindi, Pakistan",
-    period: "Jun 2023 - Dec 2023",
+    period: "Jun 2025 - Aug 2025",
     type: "Internship",
     description:
       "Focused on creating responsive, accessible user interfaces using modern frontend frameworks. Collaborated with designers and UX teams to implement pixel-perfect designs.",
@@ -18,38 +18,24 @@ const experiences = [
       "Implemented accessibility features achieving WCAG 2.1 AA compliance",
       "Created mobile-first designs with 99% cross-device compatibility",
     ],
-    technologies: [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Figma",
-      "Webpack",
-      "Git",
-    ],
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Figma", "Git"],
     current: false,
   },
   {
     title: "UI Development Intern",
     company: "Creative Digital Agency",
     location: "Rawalpindi, Pakistan",
-    period: "Jan 2023 - May 2023",
+    period: "Jan 2024 - Mar 2024",
     type: "Internship",
     description:
       "Developed interactive user interfaces and collaborated with design teams to bring creative concepts to life. Gained experience with modern CSS frameworks and animation libraries.",
     achievements: [
-      "Created 8+ reusable Vue.js components for the design system",
+      "Created 8+ reusable React.js components for the design system",
       "Implemented smooth animations increasing user engagement by 25%",
       "Converted 10+ Figma designs into functional web interfaces",
       "Optimized CSS bundle size reducing load time by 35%",
     ],
-    technologies: [
-      "Vue.js",
-      "Sass",
-      "JavaScript",
-      "CSS Animations",
-      "Figma",
-      "Jest",
-    ],
+    technologies: ["React.js", "JavaScript", "CSS Animations", "Figma", "Jest"],
   },
 ];
 
