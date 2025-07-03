@@ -6,7 +6,7 @@ const experiences = [
   {
     title: "Senior Full Stack Developer",
     company: "TechCorp Solutions",
-    location: "San Francisco, CA",
+    location: "Rawalpindi, Pakistan",
     period: "2022 - Present",
     type: "Full-time",
     description:
@@ -30,7 +30,7 @@ const experiences = [
   {
     title: "Full Stack Developer",
     company: "InnovateLab",
-    location: "Austin, TX",
+    location: "Rawalpindi, Pakistan",
     period: "2020 - 2022",
     type: "Full-time",
     description:
@@ -62,7 +62,7 @@ const experiences = [
   {
     title: "Junior Web Developer",
     company: "StartupXYZ",
-    location: "New York, NY",
+    location: "Rawalpindi, Pakistan",
     period: "2018 - 2019",
     type: "Full-time",
     description:

@@ -7,7 +7,7 @@ const experiences = [
   {
     title: "Frontend Development Intern",
     company: "DesignTech Studios",
-    location: "San Francisco, CA",
+    location: "Rawalpindi, Pakistan",
     period: "Jun 2023 - Dec 2023",
     type: "Internship",
     description:
@@ -31,7 +31,7 @@ const experiences = [
   {
     title: "UI Development Intern",
     company: "Creative Digital Agency",
-    location: "Austin, TX",
+    location: "Rawalpindi, Pakistan",
     period: "Jan 2023 - May 2023",
     type: "Internship",
     description:
