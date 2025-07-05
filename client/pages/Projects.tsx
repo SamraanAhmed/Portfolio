@@ -6,7 +6,7 @@ import { Layout } from "@/components/layout/Layout";
 
 // Import images with relative paths
 import XeeTechImage from "@/components/Images/XeeTechlogo.png";
-import DataVizImage from "@/components/Images/ImageBot.png";
+import AmbientSoundMixer from "@/components/Images/AmbientSoundMixer.png";
 import PortfolioTemplateImage from "@/components/Images/ImageBot.png";
 import CSSPlaygroundImage from "@/components/Images/ImageBot.png";
 
@@ -32,32 +32,26 @@ const projects = [
     featured: true,
   },
   // Uncomment the following projects to include them in the showcase
-  // {
-  //   title: "Interactive Data Visualization",
-  //   description:
-  //     "A dynamic dashboard showcasing complex data through beautiful, interactive charts and graphs. Features smooth animations, filtering capabilities, and responsive design.",
-  //   image: DataVizImage,
-  //   technologies: [
-  //     "Vue.js",
-  //     "D3.js",
-  //     "Chart.js",
-  //     "CSS Grid",
-  //     "Sass",
-  //     "Webpack",
-  //   ],
-  //   features: [
-  //     "Interactive chart components",
-  //     "Real-time data updates",
-  //     "Responsive grid layout",
-  //     "Custom animations",
-  //   ],
-  //   metrics: {
-  //     icon: Users,
-  //     label: "98% user satisfaction",
-  //   },
-  //   liveUrl: "https://data-viz-demo.com",
-  //   githubUrl: "https://github.com/samraanahmed/data-visualization",
-  // },
+  {
+    title: "Ambient Sound Mixer",
+    description:
+      "Immerse yourself in a personalized auditory experience with the Ambient Sound Mixer, designed to create the perfect background ambiance for studying, working, or relaxing. Blend a variety of soothing ambient sounds to craft your ideal soundscape, helping you focus or unwind with ease.",
+    image: AmbientSoundMixer,
+    technologies: ["React", "Tailwind CSS", "TypeScript", "Netlify"],
+    features: [
+      "Interactive sound components",
+      "Responsive grid layout",
+      "Customizable Sound Blending",
+      "Volume and Frequency Control",
+      "User-Friendly Interface",
+    ],
+    metrics: {
+      icon: Users,
+      label: "98% user satisfaction",
+    },
+    liveUrl: "https://ambientsoundmixer.netlify.app/",
+    githubUrl: "#",
+  },
   // {
   //   title: "Portfolio Website Template",
   //   description:
