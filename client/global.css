@@ -141,12 +141,12 @@
   }
 }
 
-@keyframes infinite-scroll {
+@keyframes circular-motion {
   0% {
-    transform: translateX(0);
+    transform: rotate(0deg);
   }
   100% {
-    transform: translateX(-33.333%);
+    transform: rotate(360deg);
   }
 }
 
