@@ -162,6 +162,6 @@
   animation: slide-in-left 0.8s ease-out;
 }
 
-.animate-circular-motion {
-  animation: circular-motion 20s linear infinite;
+.animate-infinite-scroll {
+  animation: infinite-scroll 40s linear infinite;
 }
