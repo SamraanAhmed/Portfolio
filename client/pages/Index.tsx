@@ -116,8 +116,8 @@ export default function Index() {
             </p>
           </div>
 
-          <div className="relative">
-            <div className="flex animate-scroll-left">
+          <div className="relative overflow-hidden">
+            <div className="flex animate-scroll-seamless">
               {/* First set of skills */}
               {skills.map((skill, index) => (
                 <Card
@@ -125,7 +125,12 @@ export default function Index() {
                   className="flex-shrink-0 w-32 mx-2 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer"
                 >
                   <CardContent className="p-4 text-center">
-                    <div className="text-3xl mb-2">{skill.icon}</div>
+                    <div className="text-3xl mb-2">
+                      <FontAwesomeIcon
+                        icon={skill.icon}
+                        style={{ color: skill.color }}
+                      />
+                    </div>
                     <h3 className="font-medium text-xs text-foreground">
                       {skill.name}
                     </h3>
@@ -139,7 +144,12 @@ export default function Index() {
                   className="flex-shrink-0 w-32 mx-2 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer"
                 >
                   <CardContent className="p-4 text-center">
-                    <div className="text-3xl mb-2">{skill.icon}</div>
+                    <div className="text-3xl mb-2">
+                      <FontAwesomeIcon
+                        icon={skill.icon}
+                        style={{ color: skill.color }}
+                      />
+                    </div>
                     <h3 className="font-medium text-xs text-foreground">
                       {skill.name}
                     </h3>
