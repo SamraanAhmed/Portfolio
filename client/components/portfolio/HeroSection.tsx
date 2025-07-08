@@ -14,12 +14,16 @@ export function HeroSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center relative">
         <div className="space-y-8">
           {/* Profile Image */}
-          <div className="mx-auto w-32 h-32 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center border-4 border-primary/20 group hover:w-80 hover:h-32 hover:rounded-full transition-all duration-500 ease-in-out cursor-pointer">
-            <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center group-hover:w-80 group-hover:h-24 group-hover:rounded-full group-hover:px-6 transition-all duration-500 ease-in-out">
-              <span className="text-3xl font-bold text-primary transition-all duration-500 ease-in-out overflow-hidden whitespace-nowrap">
-                <span className="group-hover:hidden">SA</span>
-                <span className="hidden group-hover:inline">Samraan Ahmed</span>
-              </span>
+          <div className="mx-auto w-80 h-32 flex items-center justify-center cursor-pointer group">
+            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center border-4 border-primary/20 group-hover:w-80 group-hover:h-32 group-hover:rounded-full transition-all duration-500 ease-in-out relative overflow-hidden">
+              <div className="absolute inset-1 rounded-full bg-primary/10 flex items-center justify-center group-hover:rounded-full transition-all duration-500 ease-in-out">
+                <span className="text-3xl font-bold text-primary transition-all duration-500 ease-in-out overflow-hidden whitespace-nowrap">
+                  <span className="group-hover:hidden">SA</span>
+                  <span className="hidden group-hover:inline">
+                    Samraan Ahmed
+                  </span>
+                </span>
+              </div>
             </div>
           </div>
 
