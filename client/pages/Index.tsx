@@ -84,7 +84,7 @@ export default function Index() {
 
       {/* Skills Section */}
       <section className="py-16 overflow-hidden">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Technical Skills
@@ -95,24 +95,37 @@ export default function Index() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {skills.map((skill, index) => (
-              <Card
-                key={index}
-                className="group hover:shadow-lg hover:scale-105 transition-all duration-300 animate-slide-in-left cursor-pointer"
-                style={{
-                  animationDelay: `${index * 100}ms`,
-                  animationFillMode: "both",
-                }}
-              >
-                <CardContent className="p-4 text-center">
-                  <div className="text-3xl mb-2">{skill.icon}</div>
-                  <h3 className="font-medium text-sm text-foreground">
-                    {skill.name}
-                  </h3>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="relative">
+            <div className="flex animate-scroll-left">
+              {/* First set of skills */}
+              {skills.map((skill, index) => (
+                <Card
+                  key={`first-${index}`}
+                  className="flex-shrink-0 w-32 mx-2 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer"
+                >
+                  <CardContent className="p-4 text-center">
+                    <div className="text-3xl mb-2">{skill.icon}</div>
+                    <h3 className="font-medium text-xs text-foreground">
+                      {skill.name}
+                    </h3>
+                  </CardContent>
+                </Card>
+              ))}
+              {/* Duplicate set for seamless loop */}
+              {skills.map((skill, index) => (
+                <Card
+                  key={`second-${index}`}
+                  className="flex-shrink-0 w-32 mx-2 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer"
+                >
+                  <CardContent className="p-4 text-center">
+                    <div className="text-3xl mb-2">{skill.icon}</div>
+                    <h3 className="font-medium text-xs text-foreground">
+                      {skill.name}
+                    </h3>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
