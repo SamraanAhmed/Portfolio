@@ -4,51 +4,25 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 
-const skillCategories = [
-  {
-    title: "Frontend Development",
-    icon: "🎨",
-    skills: [
-      { name: "React", level: 95 },
-      { name: "TypeScript", level: 90 },
-      { name: "Next.js", level: 88 },
-      { name: "Tailwind CSS", level: 92 },
-      { name: "JavaScript", level: 95 },
-    ],
-  },
-  {
-    title: "Backend Development",
-    icon: "⚙️",
-    skills: [
-      { name: "Node.js", level: 90 },
-      { name: "Express.js", level: 88 },
-      { name: "Python", level: 85 },
-      { name: "REST APIs", level: 92 },
-      { name: "GraphQL", level: 80 },
-    ],
-  },
-  {
-    title: "Database & Cloud",
-    icon: "☁️",
-    skills: [
-      { name: "MongoDB", level: 88 },
-      { name: "PostgreSQL", level: 85 },
-      { name: "AWS", level: 82 },
-      { name: "Docker", level: 78 },
-      { name: "Redis", level: 75 },
-    ],
-  },
-  {
-    title: "Tools & Workflow",
-    icon: "🔧",
-    skills: [
-      { name: "Git", level: 95 },
-      { name: "CI/CD", level: 85 },
-      { name: "Jest", level: 88 },
-      { name: "Webpack", level: 80 },
-      { name: "Linux", level: 82 },
-    ],
-  },
+const skills = [
+  { name: "React", icon: "⚛️" },
+  { name: "TypeScript", icon: "🔷" },
+  { name: "Next.js", icon: "▲" },
+  { name: "JavaScript", icon: "🟨" },
+  { name: "Node.js", icon: "🟢" },
+  { name: "Python", icon: "🐍" },
+  { name: "Express.js", icon: "🚂" },
+  { name: "MongoDB", icon: "🍃" },
+  { name: "PostgreSQL", icon: "🐘" },
+  { name: "AWS", icon: "☁️" },
+  { name: "Docker", icon: "🐳" },
+  { name: "Git", icon: "📦" },
+  { name: "Tailwind CSS", icon: "🎨" },
+  { name: "GraphQL", icon: "📊" },
+  { name: "REST APIs", icon: "🔌" },
+  { name: "Jest", icon: "🧪" },
+  { name: "Webpack", icon: "📦" },
+  { name: "Linux", icon: "🐧" },
 ];
 
 const coreSkills = [
