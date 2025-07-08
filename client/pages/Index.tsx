@@ -3,26 +3,47 @@ import { HeroSection } from "@/components/portfolio/HeroSection";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faReact,
+  faJs,
+  faNodeJs,
+  faPython,
+  faAws,
+  faDocker,
+  faGitAlt,
+  faLinux,
+  faHtml5,
+  faCss3Alt,
+} from "@fortawesome/free-brands-svg-icons";
+import {
+  faCode,
+  faDatabase,
+  faServer,
+  faCog,
+  faCloud,
+  faCodeBranch,
+} from "@fortawesome/free-solid-svg-icons";
 
 const skills = [
-  { name: "React", icon: "⚛️" },
-  { name: "TypeScript", icon: "🔷" },
-  { name: "Next.js", icon: "▲" },
-  { name: "JavaScript", icon: "🟨" },
-  { name: "Node.js", icon: "🟢" },
-  { name: "Python", icon: "🐍" },
-  { name: "Express.js", icon: "🚂" },
-  { name: "MongoDB", icon: "🍃" },
-  { name: "PostgreSQL", icon: "🐘" },
-  { name: "AWS", icon: "☁️" },
-  { name: "Docker", icon: "🐳" },
-  { name: "Git", icon: "📦" },
-  { name: "Tailwind CSS", icon: "🎨" },
-  { name: "GraphQL", icon: "📊" },
-  { name: "REST APIs", icon: "🔌" },
-  { name: "Jest", icon: "🧪" },
-  { name: "Webpack", icon: "📦" },
-  { name: "Linux", icon: "🐧" },
+  { name: "React", icon: faReact, color: "#61DAFB" },
+  { name: "TypeScript", icon: faCode, color: "#3178C6" },
+  { name: "Next.js", icon: faReact, color: "#000000" },
+  { name: "JavaScript", icon: faJs, color: "#F7DF1E" },
+  { name: "Node.js", icon: faNodeJs, color: "#339933" },
+  { name: "Python", icon: faPython, color: "#3776AB" },
+  { name: "Express.js", icon: faServer, color: "#000000" },
+  { name: "MongoDB", icon: faDatabase, color: "#47A248" },
+  { name: "PostgreSQL", icon: faDatabase, color: "#336791" },
+  { name: "AWS", icon: faAws, color: "#FF9900" },
+  { name: "Docker", icon: faDocker, color: "#2496ED" },
+  { name: "Git", icon: faGitAlt, color: "#F05032" },
+  { name: "Tailwind CSS", icon: faCss3Alt, color: "#06B6D4" },
+  { name: "GraphQL", icon: faCodeBranch, color: "#E10098" },
+  { name: "REST APIs", icon: faCloud, color: "#FF6B6B" },
+  { name: "Jest", icon: faCog, color: "#C21325" },
+  { name: "Webpack", icon: faCog, color: "#8DD6F9" },
+  { name: "Linux", icon: faLinux, color: "#FCC624" },
 ];
 
 const coreSkills = [
