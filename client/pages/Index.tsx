@@ -84,49 +84,32 @@ export default function Index() {
 
       {/* Skills Section */}
       <section className="py-16 overflow-hidden">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Technical Skills
             </h2>
             <div className="w-16 h-1 bg-primary mx-auto mb-6"></div>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              My expertise across the full stack development spectrum
+              Technologies I work with
             </p>
           </div>
 
-          <div className="space-y-6">
-            {skillCategories.map((category, index) => (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {skills.map((skill, index) => (
               <Card
                 key={index}
-                className="group hover:shadow-lg transition-all duration-300 animate-slide-in-left"
+                className="group hover:shadow-lg hover:scale-105 transition-all duration-300 animate-slide-in-left cursor-pointer"
                 style={{
-                  animationDelay: `${index * 200}ms`,
+                  animationDelay: `${index * 100}ms`,
                   animationFillMode: "both",
                 }}
               >
-                <CardHeader>
-                  <CardTitle className="flex items-center space-x-3">
-                    <span className="text-2xl">{category.icon}</span>
-                    <span>{category.title}</span>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    {category.skills.map((skill, skillIndex) => (
-                      <div key={skillIndex}>
-                        <div className="flex justify-between items-center mb-2">
-                          <span className="font-medium text-foreground">
-                            {skill.name}
-                          </span>
-                          <span className="text-sm text-muted-foreground">
-                            {skill.level}%
-                          </span>
-                        </div>
-                        <Progress value={skill.level} className="h-2" />
-                      </div>
-                    ))}
-                  </div>
+                <CardContent className="p-4 text-center">
+                  <div className="text-3xl mb-2">{skill.icon}</div>
+                  <h3 className="font-medium text-sm text-foreground">
+                    {skill.name}
+                  </h3>
                 </CardContent>
               </Card>
             ))}
