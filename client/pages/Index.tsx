@@ -131,7 +131,7 @@ export default function Index() {
                   animationFillMode: "both",
                 }}
               >
-                <CardHeader className="pb-4">
+                <CardHeader>
                   <CardTitle className="flex items-center space-x-3">
                     <span className="text-2xl">{category.icon}</span>
                     <span>{category.title}</span>
