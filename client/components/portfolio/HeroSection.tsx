@@ -16,7 +16,7 @@ export function HeroSection() {
           {/* Profile Image */}
           <div className="mx-auto w-80 h-32 flex items-center justify-center cursor-pointer group">
             <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center border-4 border-primary/20 group-hover:w-80 group-hover:h-32 group-hover:rounded-full transition-all duration-500 ease-in-out relative overflow-hidden">
-              <div className="absolute inset-1 rounded-full bg-primary/10 flex items-center justify-center group-hover:rounded-full transition-all duration-500 ease-in-out">
+              <div className="absolute inset-2 rounded-full bg-primary/10 flex items-center justify-center group-hover:rounded-full transition-all duration-500 ease-in-out">
                 <span className="text-3xl font-bold text-primary transition-all duration-500 ease-in-out overflow-hidden whitespace-nowrap">
                   <span className="group-hover:hidden">SA</span>
                   <span className="hidden group-hover:inline">
