@@ -117,7 +117,7 @@ export default function Index() {
           </div>
 
           <div className="relative overflow-hidden">
-            <div className="flex animate-scroll-seamless">
+            <div className="flex animate-infinite-scroll">
               {/* First set of skills */}
               {skills.map((skill, index) => (
                 <Card
@@ -141,6 +141,25 @@ export default function Index() {
               {skills.map((skill, index) => (
                 <Card
                   key={`second-${index}`}
+                  className="flex-shrink-0 w-32 mx-2 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer"
+                >
+                  <CardContent className="p-4 text-center">
+                    <div className="text-3xl mb-2">
+                      <FontAwesomeIcon
+                        icon={skill.icon}
+                        style={{ color: skill.color }}
+                      />
+                    </div>
+                    <h3 className="font-medium text-xs text-foreground">
+                      {skill.name}
+                    </h3>
+                  </CardContent>
+                </Card>
+              ))}
+              {/* Third set for extra smooth transition */}
+              {skills.map((skill, index) => (
+                <Card
+                  key={`third-${index}`}
                   className="flex-shrink-0 w-32 mx-2 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer"
                 >
                   <CardContent className="p-4 text-center">
