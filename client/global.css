@@ -162,6 +162,6 @@
   animation: slide-in-left 0.8s ease-out;
 }
 
-.animate-scroll-seamless {
-  animation: scroll-seamless 30s linear infinite;
+.animate-infinite-scroll {
+  animation: infinite-scroll 40s linear infinite;
 }
