@@ -116,65 +116,33 @@ export default function Index() {
             </p>
           </div>
 
-          <div className="relative overflow-hidden">
-            <div className="flex animate-infinite-scroll">
-              {/* First set of skills */}
-              {skills.map((skill, index) => (
-                <Card
-                  key={`first-${index}`}
-                  className="flex-shrink-0 w-32 mx-2 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer"
-                >
-                  <CardContent className="p-4 text-center">
-                    <div className="text-3xl mb-2">
-                      <FontAwesomeIcon
-                        icon={skill.icon}
-                        style={{ color: skill.color }}
-                      />
-                    </div>
-                    <h3 className="font-medium text-xs text-foreground">
-                      {skill.name}
-                    </h3>
-                  </CardContent>
-                </Card>
-              ))}
-              {/* Duplicate set for seamless loop */}
-              {skills.map((skill, index) => (
-                <Card
-                  key={`second-${index}`}
-                  className="flex-shrink-0 w-32 mx-2 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer"
-                >
-                  <CardContent className="p-4 text-center">
-                    <div className="text-3xl mb-2">
-                      <FontAwesomeIcon
-                        icon={skill.icon}
-                        style={{ color: skill.color }}
-                      />
-                    </div>
-                    <h3 className="font-medium text-xs text-foreground">
-                      {skill.name}
-                    </h3>
-                  </CardContent>
-                </Card>
-              ))}
-              {/* Third set for extra smooth transition */}
-              {skills.map((skill, index) => (
-                <Card
-                  key={`third-${index}`}
-                  className="flex-shrink-0 w-32 mx-2 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer"
-                >
-                  <CardContent className="p-4 text-center">
-                    <div className="text-3xl mb-2">
-                      <FontAwesomeIcon
-                        icon={skill.icon}
-                        style={{ color: skill.color }}
-                      />
-                    </div>
-                    <h3 className="font-medium text-xs text-foreground">
-                      {skill.name}
-                    </h3>
-                  </CardContent>
-                </Card>
-              ))}
+          <div className="relative flex justify-center items-center h-96">
+            <div className="relative w-80 h-80 animate-circular-motion">
+              {skills.map((skill, index) => {
+                const angle = (index * 360) / skills.length;
+                return (
+                  <Card
+                    key={index}
+                    className="absolute w-20 h-20 hover:shadow-lg hover:scale-110 transition-all duration-300 cursor-pointer"
+                    style={{
+                      transform: `rotate(${angle}deg) translateX(140px) rotate(-${angle}deg)`,
+                      transformOrigin: "50% 50%",
+                    }}
+                  >
+                    <CardContent className="p-2 text-center h-full flex flex-col justify-center">
+                      <div className="text-lg mb-1">
+                        <FontAwesomeIcon
+                          icon={skill.icon}
+                          style={{ color: skill.color }}
+                        />
+                      </div>
+                      <h3 className="font-medium text-xs text-foreground leading-tight">
+                        {skill.name}
+                      </h3>
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
           </div>
         </div>
