@@ -28,7 +28,7 @@ import {
 const skills = [
   { name: "React", icon: faReact, color: "#61DAFB" },
   { name: "TypeScript", icon: faCode, color: "#3178C6" },
-  { name: "Next.js", icon: faReact, color: "#000000" },
+  { name: "Next.js", icon: faReact, color: "#61DAFB" },
   { name: "JavaScript", icon: faJs, color: "#F7DF1E" },
   { name: "Node.js", icon: faNodeJs, color: "#339933" },
   { name: "Python", icon: faPython, color: "#3776AB" },
@@ -47,16 +47,14 @@ const skills = [
 ];
 
 const coreSkills = [
+  "HTML/CSS",
   "JavaScript",
   "TypeScript",
   "React",
-  "Node.js",
-  "Python",
   // "MongoDB",
   // "PostgreSQL",
   // "AWS",
   // "Docker",
-  "Git",
 ];
 
 export default function Index() {
@@ -76,11 +74,11 @@ export default function Index() {
 
           <div className="text-center space-y-6">
             <p className="text-lg md:text-xl leading-relaxed text-muted-foreground max-w-3xl mx-auto">
-              I'm a passionate Full Stack Web Developer with{" "}
-              <span className="text-primary font-semibold">5+ years</span> of
-              experience building scalable web applications. I specialize in
-              modern JavaScript technologies and have a proven track record of
-              delivering high-quality solutions.
+              I'm a passionate Frontend Web Developer with{" "}
+              <span className="text-primary font-semibold">3+ years</span> of
+              experience through internships and personal projects. I specialize
+              in creating beautiful, responsive, and accessible user interfaces
+              with modern frontend technologies.
             </p>
 
             <div className="pt-4">

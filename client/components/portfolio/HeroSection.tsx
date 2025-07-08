@@ -49,7 +49,7 @@ export function HeroSection() {
             <Button asChild size="lg" className="px-8 py-6 text-lg font-medium">
               <Link to="/projects">
                 View Projects
-                <ArrowDown className="ml-2 h-5 w-5" />
+                {/* <ArrowDown className="ml-2 h-5 w-5" /> */}
               </Link>
             </Button>
             <Button
@@ -81,9 +81,9 @@ export function HeroSection() {
           </div>
 
           {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
             <ArrowDown className="h-6 w-6 text-muted-foreground" />
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
