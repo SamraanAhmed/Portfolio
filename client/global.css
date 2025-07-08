@@ -141,7 +141,7 @@
   }
 }
 
-@keyframes scroll-left {
+@keyframes scroll-seamless {
   0% {
     transform: translateX(0);
   }
