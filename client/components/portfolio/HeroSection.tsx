@@ -50,39 +50,45 @@ export function HeroSection() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-            <Button asChild size="lg" className="px-8 py-6 text-lg font-medium">
-              <Link to="/projects">
-                View Projects
-                {/* <ArrowDown className="ml-2 h-5 w-5" /> */}
-              </Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="px-8 py-6 text-lg font-medium"
-            >
-              <Link to="/contact">
-                <Mail className="mr-2 h-5 w-5" />
-                Contact Me
-              </Link>
-            </Button>
-            <Button
-              variant="secondary"
-              size="lg"
-              className="px-8 py-6 text-lg font-medium"
-              onClick={() => {
-                // Trigger download of resume PDF
-                const link = document.createElement("a");
-                link.href = "/resume.pdf";
-                link.download = "Samraan_Ahmed_Resume.pdf";
-                link.click();
-              }}
-            >
-              <Download className="mr-2 h-5 w-5" />
-              Resume
-            </Button>
+          <div className="bg-background/60 backdrop-blur-sm rounded-xl p-6 shadow-md border border-border/30">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button
+                asChild
+                size="lg"
+                className="px-8 py-6 text-lg font-medium shadow-lg"
+              >
+                <Link to="/projects">
+                  View Projects
+                  {/* <ArrowDown className="ml-2 h-5 w-5" /> */}
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="px-8 py-6 text-lg font-medium shadow-lg bg-background/80 backdrop-blur-sm"
+              >
+                <Link to="/contact">
+                  <Mail className="mr-2 h-5 w-5" />
+                  Contact Me
+                </Link>
+              </Button>
+              <Button
+                variant="secondary"
+                size="lg"
+                className="px-8 py-6 text-lg font-medium shadow-lg bg-background/80 backdrop-blur-sm"
+                onClick={() => {
+                  // Trigger download of resume PDF
+                  const link = document.createElement("a");
+                  link.href = "/resume.pdf";
+                  link.download = "Samraan_Ahmed_Resume.pdf";
+                  link.click();
+                }}
+              >
+                <Download className="mr-2 h-5 w-5" />
+                Resume
+              </Button>
+            </div>
           </div>
 
           {/* Scroll indicator */}
