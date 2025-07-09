@@ -87,45 +87,6 @@ const DotGrid: React.FC<DotGridProps> = ({
     return p;
   }, [dotSize]);
 
-  // Function to check if a dot is within exclusion zones
-  const isInExclusionZone = useCallback(
-    (dotX: number, dotY: number) => {
-      if (!exclusionSelector || typeof window === "undefined") return false;
-
-      const canvas = canvasRef.current;
-      if (!canvas) return false;
-
-      const canvasRect = canvas.getBoundingClientRect();
-      const elements = document.querySelectorAll(exclusionSelector);
-
-      for (const element of elements) {
-        const rect = element.getBoundingClientRect();
-        // Convert element coordinates to canvas coordinates
-        const elementLeft = rect.left - canvasRect.left;
-        const elementTop = rect.top - canvasRect.top;
-
-        // Calculate center of the element
-        const centerX = elementLeft + rect.width / 2;
-        const centerY = elementTop + rect.height / 2;
-
-        // Calculate circular exclusion radius based on element size
-        const baseRadius = Math.max(rect.width, rect.height) / 2;
-        const exclusionRadius = baseRadius + dotSize * 1.5; // Add some padding
-
-        // Check if dot is within circular exclusion zone
-        const distance = Math.sqrt(
-          Math.pow(dotX - centerX, 2) + Math.pow(dotY - centerY, 2),
-        );
-
-        if (distance <= exclusionRadius) {
-          return true;
-        }
-      }
-      return false;
-    },
-    [exclusionSelector, dotSize],
-  );
-
   const buildGrid = useCallback(() => {
     const wrap = wrapperRef.current;
     const canvas = canvasRef.current;
