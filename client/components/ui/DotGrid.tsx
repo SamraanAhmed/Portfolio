@@ -35,6 +35,8 @@ export interface DotGridProps {
   returnDuration?: number;
   className?: string;
   style?: React.CSSProperties;
+  repelSelector?: string; // CSS selector for elements that repel dots
+  repelStrength?: number; // Strength of the repelling force
 }
 
 function hexToRgb(hex: string) {
