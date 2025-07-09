@@ -197,8 +197,11 @@ const DotGrid: React.FC<DotGridProps> = ({
       const { x: px, y: py } = pointerRef.current;
 
       for (const dot of dotsRef.current) {
-        const ox = dot.cx + dot.xOffset;
-        const oy = dot.cy + dot.yOffset;
+        // Calculate repelling forces
+        const repelForce = calculateRepellingForce(dot.cx, dot.cy);
+
+        const ox = dot.cx + dot.xOffset + repelForce.x;
+        const oy = dot.cy + dot.yOffset + repelForce.y;
         const dx = dot.cx - px;
         const dy = dot.cy - py;
         const dsq = dx * dx + dy * dy;
