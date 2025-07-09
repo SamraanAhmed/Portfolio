@@ -30,20 +30,24 @@ export function HeroSection() {
 
           {/* Main Heading */}
           <div className="space-y-4">
-            <h1 className="text-5xl md:text-7xl font-bold text-foreground tracking-tight">
-              Frontend Web Developer
-            </h1>
-            <div className="text-2xl md:text-3xl font-medium text-primary">
-              Crafting Beautiful User Experiences
+            <div className="bg-background/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-border/50">
+              <h1 className="text-5xl md:text-7xl font-bold text-foreground tracking-tight drop-shadow-sm">
+                Frontend Web Developer
+              </h1>
+              <div className="text-2xl md:text-3xl font-medium text-primary drop-shadow-sm mt-4">
+                Crafting Beautiful User Experiences
+              </div>
             </div>
           </div>
 
           {/* Tagline */}
-          <p className="max-w-3xl mx-auto text-xl md:text-2xl text-muted-foreground leading-relaxed">
-            Creating stunning, responsive, and interactive user interfaces with
-            modern frontend technologies. Passionate about pixel-perfect design
-            and seamless user experiences.
-          </p>
+          <div className="bg-background/70 backdrop-blur-sm rounded-xl p-6 shadow-md border border-border/30 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-foreground leading-relaxed drop-shadow-sm">
+              Creating stunning, responsive, and interactive user interfaces
+              with modern frontend technologies. Passionate about pixel-perfect
+              design and seamless user experiences.
+            </p>
+          </div>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
