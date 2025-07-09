@@ -1,213 +1,536 @@
+import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
+import {
+  Search,
+  Filter,
+  Star,
+  Award,
+  Zap,
+  Code,
+  Palette,
+  Database,
+  Cloud,
+  Shield,
+} from "lucide-react";
 
-// Icon components for different technologies
-const skillIcons = {
-  // Frontend Development
-  HTML5: () => (
-    <svg viewBox="0 0 24 24" className="w-16 h-16 text-orange-500">
-      <path
-        fill="currentColor"
-        d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"
-      />
-    </svg>
-  ),
-  CSS3: () => (
-    <svg viewBox="0 0 24 24" className="w-16 h-16 text-blue-500">
-      <path
-        fill="currentColor"
-        d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm16.611 4.844l-.081 1.076-.069.726-.48 5.418-.047.537H5.894l-.126-1.507-.026-.317h3.167l.064.756.034.394 2.88.806 2.88-.806.299-3.353H5.849l-.198-2.251-.024-.283h8.729l.131-1.467.016-.179H5.337l-.198-2.252-.025-.284h13.872l-.026.284z"
-      />
-    </svg>
-  ),
-  JavaScript: () => (
-    <svg viewBox="0 0 24 24" className="w-16 h-16 text-yellow-500">
-      <path
-        fill="currentColor"
-        d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"
-      />
-    </svg>
-  ),
-  React: () => (
-    <svg viewBox="0 0 24 24" className="w-16 h-16 text-cyan-400">
-      <path
-        fill="currentColor"
-        d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.36-.034-.47 0-.92.014-1.36.034.44-.572.895-1.096 1.36-1.564zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.36.034.47 0 .92-.014 1.36-.034-.44.572-.895 1.095-1.36 1.563-.455-.468-.91-.991-1.360-1.563z"
-      />
-    </svg>
-  ),
-  // UI Frameworks & Libraries
-  Vue: () => (
-    <svg viewBox="0 0 24 24" className="w-16 h-16 text-green-500">
-      <path
-        fill="currentColor"
-        d="M24,1.61H14.06L12,5.16,9.94,1.61H0L12,22.39ZM12,14.08,5.16,2.23H9.59L12,6.41l2.41-4.18h4.43Z"
-      />
-    </svg>
-  ),
-  TypeScript: () => (
-    <svg viewBox="0 0 24 24" className="w-16 h-16 text-blue-600">
-      <path
-        fill="currentColor"
-        d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"
-      />
-    </svg>
-  ),
-  // Tools
-  Git: () => (
-    <svg viewBox="0 0 24 24" className="w-16 h-16 text-orange-600">
-      <path
-        fill="currentColor"
-        d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.713.721.713 1.883 0 2.6-.719.721-1.889.721-2.609 0-.719-.719-.719-1.879 0-2.598.182-.18.387-.316.605-.406V8.835c-.217-.091-.424-.222-.6-.401-.545-.545-.676-1.342-.396-2.009L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187"
-      />
-    </svg>
-  ),
-  NPM: () => (
-    <svg viewBox="0 0 24 24" className="w-16 h-16 text-red-600">
-      <path
-        fill="currentColor"
-        d="M1.763 0C.786 0 0 .786 0 1.763v20.474C0 23.214.786 24 1.763 24h20.474c.977 0 1.763-.786 1.763-1.763V1.763C24 .786 23.214 0 22.237 0zM5.13 5.323l13.837.019-.009 13.836h-3.464l.01-10.382h-3.456L12.04 19.17H5.113z"
-      />
-    </svg>
-  ),
-  Figma: () => (
-    <svg viewBox="0 0 24 24" className="w-16 h-16 text-purple-600">
-      <path
-        fill="currentColor"
-        d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.354-3.02-3.019-3.02h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.015-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.02s1.354 3.019 3.019 3.019h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117v-6.039H8.148z"
-      />
-      <path
-        fill="currentColor"
-        d="M8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.026-4.49 4.515-4.49c2.489 0 4.515 2.014 4.515 4.49S10.661 24 8.172 24zm0-7.509c-1.665 0-3.044 1.355-3.044 3.019s1.379 3.02 3.044 3.02 3.044-1.355 3.044-3.02-1.379-3.019-3.044-3.019zM19.573 15.009c0 2.476-2.014 4.49-4.49 4.49s-4.49-2.014-4.49-4.49 2.014-4.49 4.49-4.49 4.49 2.014 4.49 4.49zm-1.471 0c0-1.665-1.355-3.019-3.019-3.019s-3.019 1.354-3.019 3.019 1.355 3.02 3.019 3.02 3.019-1.355 3.019-3.02z"
-      />
-    </svg>
-  ),
-  // Styling
-  Sass: () => (
-    <svg viewBox="0 0 24 24" className="w-16 h-16 text-pink-400">
-      <path
-        fill="currentColor"
-        d="M12 0c6.627 0 12 5.373 12 12 0 6.627-5.373 12-12 12C5.373 24 0 18.627 0 12 0 5.373 5.373 0 12 0zM9.615 15.998c.175.645.156 1.248-.024 1.792l-.065.18c-.024.061-.052.120-.078.176-.14.29-.326.56-.555.81-.698.759-1.672 1.047-2.09.805-.45-.262-.226-1.335.584-2.19.854-.906 2.082-1.207 2.082-1.207v-.003l.146-.027zm2.177-8.95c-.223-.897-.166-1.638.157-2.364.323-.725.864-1.384 1.527-1.87.663-.485 1.414-.792 2.13-.87.716-.077 1.363.106 1.53.663.166.558-.234 1.3-.95 1.83-.716.531-1.677.77-2.616.77-.938 0-1.778-.16-1.778-.16z"
-      />
-    </svg>
-  ),
-  TailwindCSS: () => (
-    <svg viewBox="0 0 24 24" className="w-16 h-16 text-cyan-500">
-      <path
-        fill="currentColor"
-        d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"
-      />
-    </svg>
-  ),
+// Professional skill data with detailed information
+const skillsData = {
+  "Frontend Development": {
+    icon: Palette,
+    color: "from-blue-500 to-cyan-500",
+    bgColor: "bg-blue-50 dark:bg-blue-950/20",
+    borderColor: "border-blue-200 dark:border-blue-800",
+    skills: [
+      {
+        name: "React",
+        level: 95,
+        experience: "4+ years",
+        description: "Advanced component architecture, hooks, state management",
+        certifications: ["React Professional", "Meta React Advanced"],
+      },
+      {
+        name: "TypeScript",
+        level: 92,
+        experience: "3+ years",
+        description: "Type-safe development, advanced generics, utility types",
+        certifications: ["TypeScript Expert"],
+      },
+      {
+        name: "Next.js",
+        level: 90,
+        experience: "3+ years",
+        description: "SSR, SSG, API routes, performance optimization",
+        certifications: ["Vercel Expert"],
+      },
+      {
+        name: "Tailwind CSS",
+        level: 94,
+        experience: "3+ years",
+        description: "Utility-first styling, custom design systems",
+        certifications: [],
+      },
+      {
+        name: "Vue.js",
+        level: 85,
+        experience: "2+ years",
+        description: "Composition API, Vuex, Nuxt.js development",
+        certifications: [],
+      },
+    ],
+  },
+  "Backend Development": {
+    icon: Code,
+    color: "from-green-500 to-emerald-500",
+    bgColor: "bg-green-50 dark:bg-green-950/20",
+    borderColor: "border-green-200 dark:border-green-800",
+    skills: [
+      {
+        name: "Node.js",
+        level: 90,
+        experience: "4+ years",
+        description: "Express, Fastify, microservices architecture",
+        certifications: ["Node.js Application Developer"],
+      },
+      {
+        name: "Python",
+        level: 88,
+        experience: "3+ years",
+        description: "Django, FastAPI, data processing, automation",
+        certifications: ["Python Institute PCAP"],
+      },
+      {
+        name: "GraphQL",
+        level: 82,
+        experience: "2+ years",
+        description: "Apollo Server, schema design, federation",
+        certifications: [],
+      },
+      {
+        name: "REST APIs",
+        level: 95,
+        experience: "5+ years",
+        description: "RESTful design, API documentation, versioning",
+        certifications: ["API Design Professional"],
+      },
+    ],
+  },
+  "Database & Storage": {
+    icon: Database,
+    color: "from-purple-500 to-violet-500",
+    bgColor: "bg-purple-50 dark:bg-purple-950/20",
+    borderColor: "border-purple-200 dark:border-purple-800",
+    skills: [
+      {
+        name: "PostgreSQL",
+        level: 88,
+        experience: "3+ years",
+        description: "Complex queries, performance tuning, migrations",
+        certifications: ["PostgreSQL Professional"],
+      },
+      {
+        name: "MongoDB",
+        level: 85,
+        experience: "3+ years",
+        description: "Aggregation pipelines, indexing strategies",
+        certifications: ["MongoDB Developer"],
+      },
+      {
+        name: "Redis",
+        level: 80,
+        experience: "2+ years",
+        description: "Caching strategies, session storage, pub/sub",
+        certifications: [],
+      },
+      {
+        name: "Prisma",
+        level: 82,
+        experience: "2+ years",
+        description: "Type-safe database access, migrations, relations",
+        certifications: [],
+      },
+    ],
+  },
+  "Cloud & DevOps": {
+    icon: Cloud,
+    color: "from-orange-500 to-red-500",
+    bgColor: "bg-orange-50 dark:bg-orange-950/20",
+    borderColor: "border-orange-200 dark:border-orange-800",
+    skills: [
+      {
+        name: "AWS",
+        level: 85,
+        experience: "3+ years",
+        description: "EC2, S3, Lambda, RDS, CloudFormation",
+        certifications: ["AWS Solutions Architect Associate"],
+      },
+      {
+        name: "Docker",
+        level: 82,
+        experience: "2+ years",
+        description: "Containerization, multi-stage builds, orchestration",
+        certifications: ["Docker Certified Associate"],
+      },
+      {
+        name: "Kubernetes",
+        level: 75,
+        experience: "1+ years",
+        description: "Container orchestration, deployments, services",
+        certifications: [],
+      },
+      {
+        name: "CI/CD",
+        level: 88,
+        experience: "3+ years",
+        description: "GitHub Actions, Jenkins, automated testing",
+        certifications: [],
+      },
+    ],
+  },
 };
 
-const skillCategories = [
+const additionalSkills = [
+  { name: "Agile/Scrum", category: "Methodology" },
+  { name: "Test-Driven Development", category: "Testing" },
+  { name: "Performance Optimization", category: "Optimization" },
+  { name: "Accessibility (A11y)", category: "UX" },
+  { name: "Design Systems", category: "Design" },
+  { name: "Microservices", category: "Architecture" },
+  { name: "WebRTC", category: "Communication" },
+  { name: "Socket.io", category: "Real-time" },
+  { name: "Electron", category: "Desktop" },
+  { name: "React Native", category: "Mobile" },
+];
+
+const certifications = [
   {
-    title: "Frontend Development",
-    skills: [
-      { name: "HTML5", icon: skillIcons.HTML5 },
-      { name: "CSS3", icon: skillIcons.CSS3 },
-      { name: "JavaScript", icon: skillIcons.JavaScript },
-      { name: "React", icon: skillIcons.React },
-    ],
+    name: "AWS Solutions Architect Associate",
+    issuer: "Amazon Web Services",
+    year: "2023",
+    level: "Professional",
   },
   {
-    title: "UI Frameworks & Libraries",
-    skills: [
-      { name: "Vue.js", icon: skillIcons.Vue },
-      { name: "TypeScript", icon: skillIcons.TypeScript },
-    ],
+    name: "Google Cloud Professional Developer",
+    issuer: "Google Cloud",
+    year: "2023",
+    level: "Professional",
   },
   {
-    title: "Tools & Technologies",
-    skills: [
-      { name: "Git", icon: skillIcons.Git },
-      { name: "npm", icon: skillIcons.NPM },
-      { name: "Figma", icon: skillIcons.Figma },
-    ],
+    name: "React Professional Certification",
+    issuer: "Meta",
+    year: "2022",
+    level: "Advanced",
   },
   {
-    title: "Styling & Preprocessing",
-    skills: [
-      { name: "Sass", icon: skillIcons.Sass },
-      { name: "Tailwind CSS", icon: skillIcons.TailwindCSS },
-    ],
+    name: "Node.js Application Developer",
+    issuer: "OpenJS Foundation",
+    year: "2022",
+    level: "Professional",
   },
 ];
 
 export default function Skills() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [expandedSkill, setExpandedSkill] = useState<string | null>(null);
+
+  const categories = ["All", ...Object.keys(skillsData)];
+
+  const filteredSkillsData = Object.entries(skillsData).reduce(
+    (acc, [category, data]) => {
+      if (selectedCategory === "All" || selectedCategory === category) {
+        const filteredSkills = data.skills.filter(
+          (skill) =>
+            skill.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            skill.description.toLowerCase().includes(searchTerm.toLowerCase()),
+        );
+        if (filteredSkills.length > 0) {
+          acc[category] = { ...data, skills: filteredSkills };
+        }
+      }
+      return acc;
+    },
+    {} as typeof skillsData,
+  );
+
+  const getSkillLevelColor = (level: number) => {
+    if (level >= 90) return "text-green-600 dark:text-green-400";
+    if (level >= 80) return "text-blue-600 dark:text-blue-400";
+    if (level >= 70) return "text-yellow-600 dark:text-yellow-400";
+    return "text-gray-600 dark:text-gray-400";
+  };
+
+  const getSkillLevelLabel = (level: number) => {
+    if (level >= 90) return "Expert";
+    if (level >= 80) return "Advanced";
+    if (level >= 70) return "Intermediate";
+    return "Beginner";
+  };
+
   return (
     <Layout>
       <div className="min-h-screen bg-background pt-24 pb-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Main heading exactly like the image */}
-          <div className="text-center mb-20">
-            <h1 className="text-5xl font-bold text-foreground mb-4">
-              My Skills
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header Section */}
+          <div className="text-center mb-16">
+            <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
+              Technical Expertise
             </h1>
-            <div className="w-16 h-1 bg-primary mx-auto"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-blue-500 mx-auto mb-8 rounded-full"></div>
+            <p className="max-w-3xl mx-auto text-xl text-muted-foreground leading-relaxed">
+              A comprehensive overview of my technical skills, certifications,
+              and professional experience across the full-stack development
+              spectrum.
+            </p>
           </div>
 
-          {/* Skills Grid - 2x2 layout exactly matching the image */}
-          <div className="grid lg:grid-cols-2 gap-20 max-w-5xl mx-auto">
-            {skillCategories.map((category, categoryIndex) => (
-              <div key={categoryIndex} className="space-y-8">
-                <h2 className="text-2xl font-bold text-foreground text-left">
-                  {category.title}
-                </h2>
-                <div
-                  className={`flex flex-wrap gap-6 ${
-                    category.skills.length === 4
-                      ? "justify-between"
-                      : category.skills.length === 3
-                        ? "justify-start"
-                        : "justify-start"
-                  }`}
-                >
-                  {category.skills.map((skill, skillIndex) => (
-                    <div
-                      key={skillIndex}
-                      className="bg-gray-900 dark:bg-black rounded-2xl p-6 flex flex-col items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-2xl group w-[120px] h-[120px]"
-                    >
-                      <div className="mb-4 group-hover:scale-110 transition-transform duration-300">
-                        <skill.icon />
-                      </div>
-                      <h3 className="text-sm font-medium text-center text-white group-hover:text-primary transition-colors duration-300">
-                        {skill.name}
-                      </h3>
-                    </div>
-                  ))}
-                </div>
+          {/* Search and Filter Section */}
+          <div className="mb-12">
+            <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-8">
+              <div className="relative flex-1 max-w-md">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                <Input
+                  placeholder="Search skills, technologies..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10 h-12 bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 focus:border-primary"
+                />
               </div>
-            ))}
+              <div className="flex flex-wrap gap-2">
+                {categories.map((category) => (
+                  <Button
+                    key={category}
+                    variant={
+                      selectedCategory === category ? "default" : "outline"
+                    }
+                    onClick={() => setSelectedCategory(category)}
+                    className={cn(
+                      "transition-all duration-200",
+                      selectedCategory === category
+                        ? "bg-primary text-primary-foreground shadow-lg"
+                        : "hover:bg-secondary",
+                    )}
+                  >
+                    <Filter className="w-4 h-4 mr-2" />
+                    {category}
+                  </Button>
+                ))}
+              </div>
+            </div>
           </div>
 
-          {/* Additional Skills */}
-          <div className="mt-24 text-center">
-            <h3 className="text-2xl font-semibold text-foreground mb-8">
-              Additional Skills & Technologies
-            </h3>
-            <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
-              {[
-                "Responsive Design",
-                "Progressive Web Apps",
-                "SEO Optimization",
-                "Cross-browser Compatibility",
-                "Mobile-first Design",
-                "User Experience (UX)",
-                "Design Systems",
-                "Animation Libraries",
-                "State Management",
-                "Component Libraries",
-                "Performance Optimization",
-                "Accessibility (A11y)",
-              ].map((skill, index) => (
-                <span
-                  key={index}
-                  className="px-4 py-2 bg-secondary text-secondary-foreground rounded-full text-sm font-medium hover:bg-primary hover:text-primary-foreground transition-colors duration-200 cursor-default"
+          {/* Skills Categories */}
+          <div className="space-y-12">
+            {Object.entries(filteredSkillsData).map(
+              ([categoryName, categoryData]) => {
+                const IconComponent = categoryData.icon;
+
+                return (
+                  <div key={categoryName} className="group">
+                    <div className="flex items-center mb-8">
+                      <div
+                        className={cn(
+                          "p-3 rounded-xl mr-4",
+                          categoryData.bgColor,
+                          categoryData.borderColor,
+                          "border-2",
+                        )}
+                      >
+                        <IconComponent className="h-6 w-6" />
+                      </div>
+                      <h2 className="text-3xl font-bold text-foreground">
+                        {categoryName}
+                      </h2>
+                      <div
+                        className={cn(
+                          "flex-1 h-1 ml-6 rounded-full bg-gradient-to-r",
+                          categoryData.color,
+                        )}
+                      />
+                    </div>
+
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {categoryData.skills.map((skill) => (
+                        <Card
+                          key={skill.name}
+                          className={cn(
+                            "group/card cursor-pointer transition-all duration-300",
+                            "hover:shadow-xl hover:-translate-y-2",
+                            categoryData.bgColor,
+                            categoryData.borderColor,
+                            "border-2 hover:border-primary/50",
+                            expandedSkill === skill.name &&
+                              "ring-2 ring-primary shadow-xl",
+                          )}
+                          onClick={() =>
+                            setExpandedSkill(
+                              expandedSkill === skill.name ? null : skill.name,
+                            )
+                          }
+                        >
+                          <CardContent className="p-6">
+                            <div className="flex items-center justify-between mb-4">
+                              <h3 className="text-xl font-semibold text-foreground">
+                                {skill.name}
+                              </h3>
+                              <div className="flex items-center gap-2">
+                                <Star
+                                  className={cn(
+                                    "h-4 w-4",
+                                    getSkillLevelColor(skill.level),
+                                  )}
+                                />
+                                <span
+                                  className={cn(
+                                    "text-sm font-medium",
+                                    getSkillLevelColor(skill.level),
+                                  )}
+                                >
+                                  {getSkillLevelLabel(skill.level)}
+                                </span>
+                              </div>
+                            </div>
+
+                            <div className="mb-4">
+                              <div className="flex justify-between text-sm mb-2">
+                                <span className="text-muted-foreground">
+                                  Proficiency
+                                </span>
+                                <span className="font-medium">
+                                  {skill.level}%
+                                </span>
+                              </div>
+                              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div
+                                  className={cn(
+                                    "h-2 rounded-full bg-gradient-to-r transition-all duration-1000",
+                                    categoryData.color,
+                                  )}
+                                  style={{ width: `${skill.level}%` }}
+                                />
+                              </div>
+                            </div>
+
+                            <div className="space-y-2 text-sm">
+                              <div className="flex items-center justify-between">
+                                <span className="text-muted-foreground">
+                                  Experience:
+                                </span>
+                                <span className="font-medium">
+                                  {skill.experience}
+                                </span>
+                              </div>
+                            </div>
+
+                            {expandedSkill === skill.name && (
+                              <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 animate-fade-in">
+                                <p className="text-sm text-muted-foreground mb-3">
+                                  {skill.description}
+                                </p>
+                                {skill.certifications.length > 0 && (
+                                  <div>
+                                    <h4 className="text-sm font-semibold mb-2 flex items-center">
+                                      <Award className="h-4 w-4 mr-1" />
+                                      Certifications
+                                    </h4>
+                                    <div className="flex flex-wrap gap-1">
+                                      {skill.certifications.map((cert) => (
+                                        <Badge
+                                          key={cert}
+                                          variant="secondary"
+                                          className="text-xs"
+                                        >
+                                          {cert}
+                                        </Badge>
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            )}
+                          </CardContent>
+                        </Card>
+                      ))}
+                    </div>
+                  </div>
+                );
+              },
+            )}
+          </div>
+
+          {/* Professional Certifications */}
+          <div className="mt-20">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-foreground mb-4">
+                Professional Certifications
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Industry-recognized certifications and achievements
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {certifications.map((cert) => (
+                <Card
+                  key={cert.name}
+                  className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 border-2"
                 >
-                  {skill}
-                </span>
+                  <CardContent className="p-6 text-center">
+                    <div className="bg-primary/10 p-3 rounded-full w-fit mx-auto mb-4">
+                      <Award className="h-8 w-8 text-primary" />
+                    </div>
+                    <h3 className="font-semibold text-foreground mb-2 text-sm leading-tight">
+                      {cert.name}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-2">
+                      {cert.issuer}
+                    </p>
+                    <div className="flex items-center justify-between text-xs">
+                      <Badge variant="outline" className="text-xs">
+                        {cert.level}
+                      </Badge>
+                      <span className="text-muted-foreground">{cert.year}</span>
+                    </div>
+                  </CardContent>
+                </Card>
               ))}
+            </div>
+          </div>
+
+          {/* Additional Skills Cloud */}
+          <div className="mt-20">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-foreground mb-4">
+                Additional Technologies & Methodologies
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Complementary skills and emerging technologies
+              </p>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
+              {additionalSkills.map((skill, index) => (
+                <Badge
+                  key={skill.name}
+                  variant="outline"
+                  className={cn(
+                    "px-4 py-2 text-sm font-medium transition-all duration-200",
+                    "hover:bg-primary hover:text-primary-foreground hover:scale-105",
+                    "border-2 hover:border-primary cursor-default",
+                    "bg-white dark:bg-gray-900",
+                  )}
+                  style={{
+                    animationDelay: `${index * 50}ms`,
+                  }}
+                >
+                  <Zap className="w-3 h-3 mr-1" />
+                  {skill.name}
+                </Badge>
+              ))}
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <div className="mt-20 text-center">
+            <div className="bg-gradient-to-r from-primary/10 to-blue-500/10 rounded-2xl p-8 border border-primary/20">
+              <h3 className="text-2xl font-bold text-foreground mb-4">
+                Ready to collaborate?
+              </h3>
+              <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
+                Let's discuss how my technical expertise can contribute to your
+                next project. I'm always excited to work with new technologies
+                and tackle challenging problems.
+              </p>
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-primary to-blue-500 hover:from-primary/90 hover:to-blue-500/90 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                Get In Touch
+              </Button>
             </div>
           </div>
         </div>
