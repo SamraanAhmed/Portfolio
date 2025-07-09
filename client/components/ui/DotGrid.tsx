@@ -35,6 +35,7 @@ export interface DotGridProps {
   returnDuration?: number;
   className?: string;
   style?: React.CSSProperties;
+  exclusionSelector?: string; // CSS selector for elements to exclude
 }
 
 function hexToRgb(hex: string) {
