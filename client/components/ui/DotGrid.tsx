@@ -91,6 +91,57 @@ const DotGrid: React.FC<DotGridProps> = ({
     return p;
   }, [dotSize]);
 
+  // Function to calculate repelling forces from UI elements
+  const calculateRepellingForce = useCallback(
+    (dotX: number, dotY: number) => {
+      if (!repelSelector || typeof window === "undefined")
+        return { x: 0, y: 0 };
+
+      const canvas = canvasRef.current;
+      if (!canvas) return { x: 0, y: 0 };
+
+      const canvasRect = canvas.getBoundingClientRect();
+      const elements = document.querySelectorAll(repelSelector);
+
+      let totalForceX = 0;
+      let totalForceY = 0;
+
+      for (const element of elements) {
+        const rect = element.getBoundingClientRect();
+        // Convert element coordinates to canvas coordinates
+        const elementLeft = rect.left - canvasRect.left;
+        const elementTop = rect.top - canvasRect.top;
+        const centerX = elementLeft + rect.width / 2;
+        const centerY = elementTop + rect.height / 2;
+
+        // Calculate distance from dot to element center
+        const dx = dotX - centerX;
+        const dy = dotY - centerY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        // Calculate repelling radius based on element size
+        const elementRadius = Math.max(rect.width, rect.height) / 2;
+        const repelRadius = elementRadius + repelStrength * 2;
+
+        if (distance < repelRadius && distance > 0) {
+          // Calculate repelling force (stronger when closer)
+          const forceScale = (repelRadius - distance) / repelRadius;
+          const forceStrength = forceScale * repelStrength;
+
+          // Normalize direction vector
+          const forceX = (dx / distance) * forceStrength;
+          const forceY = (dy / distance) * forceStrength;
+
+          totalForceX += forceX;
+          totalForceY += forceY;
+        }
+      }
+
+      return { x: totalForceX, y: totalForceY };
+    },
+    [repelSelector, repelStrength],
+  );
+
   const buildGrid = useCallback(() => {
     const wrap = wrapperRef.current;
     const canvas = canvasRef.current;
