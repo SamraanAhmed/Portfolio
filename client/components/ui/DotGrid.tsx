@@ -105,17 +105,21 @@ const DotGrid: React.FC<DotGridProps> = ({
         // Convert element coordinates to canvas coordinates
         const elementLeft = rect.left - canvasRect.left;
         const elementTop = rect.top - canvasRect.top;
-        const elementRight = elementLeft + rect.width;
-        const elementBottom = elementTop + rect.height;
 
-        // Add some padding around elements
-        const padding = dotSize;
-        if (
-          dotX >= elementLeft - padding &&
-          dotX <= elementRight + padding &&
-          dotY >= elementTop - padding &&
-          dotY <= elementBottom + padding
-        ) {
+        // Calculate center of the element
+        const centerX = elementLeft + rect.width / 2;
+        const centerY = elementTop + rect.height / 2;
+
+        // Calculate circular exclusion radius based on element size
+        const baseRadius = Math.max(rect.width, rect.height) / 2;
+        const exclusionRadius = baseRadius + dotSize * 1.5; // Add some padding
+
+        // Check if dot is within circular exclusion zone
+        const distance = Math.sqrt(
+          Math.pow(dotX - centerX, 2) + Math.pow(dotY - centerY, 2),
+        );
+
+        if (distance <= exclusionRadius) {
           return true;
         }
       }
