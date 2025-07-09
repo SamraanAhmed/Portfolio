@@ -77,8 +77,8 @@ export default function Index() {
           <DotGrid
             dotSize={10}
             gap={15}
-            baseColor="#5227FF"
-            activeColor="#5227FF"
+            baseColor="#0080FF"
+            activeColor="#0080FF"
             proximity={120}
             shockRadius={250}
             shockStrength={5}
