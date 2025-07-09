@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import DotGrid from "@/components/ui/DotGrid";
 import {
   faReact,
   faJs,
@@ -60,10 +61,6 @@ const coreSkills = [
 export default function Index() {
   return (
     <Layout>
-<<<<<<< HEAD
-      <HeroSection />
-
-=======
       <div style={{ position: "relative", width: "100%", minHeight: "600px" }}>
         {/* DotGrid as background */}
         <div
@@ -79,13 +76,8 @@ export default function Index() {
           <DotGrid
             dotSize={10}
             gap={15}
-<<<<<<< HEAD
-            baseColor="#085b7c"
-            activeColor="#085b7c"
-=======
             baseColor="#0080FF"
             activeColor="#0080FF"
->>>>>>> 7afd70d6bbe30c60d15a95148cf841b59bd50951
             proximity={120}
             shockRadius={250}
             shockStrength={5}
@@ -98,7 +90,6 @@ export default function Index() {
           <HeroSection />
         </div>
       </div>
->>>>>>> d31b40166a544280f46ae94b10db8c88de4472ca
       {/* About Me Section */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
