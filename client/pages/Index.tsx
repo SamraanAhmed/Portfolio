@@ -77,8 +77,18 @@ export default function Index() {
           <DotGrid
             dotSize={10}
             gap={15}
+<<<<<<< HEAD
+<<<<<<< HEAD
+            baseColor="#085b7c"
+            activeColor="#085b7c"
+=======
             baseColor="#0080FF"
             activeColor="#0080FF"
+>>>>>>> 7afd70d6bbe30c60d15a95148cf841b59bd50951
+=======
+            baseColor="#5227FF"
+            activeColor="#5227FF"
+>>>>>>> parent of 0028914 (Change DotGrid colors to blue theme)
             proximity={120}
             shockRadius={250}
             shockStrength={5}
