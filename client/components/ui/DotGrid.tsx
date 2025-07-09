@@ -219,10 +219,18 @@ const DotGrid: React.FC<DotGridProps> = ({
         if (speed > speedTrigger && dist < proximity && !dot._inertiaApplied) {
           dot._inertiaApplied = true;
           gsap.killTweensOf(dot);
-          const pushX = dot.cx - pr.x + vx * 0.005;
-          const pushY = dot.cy - pr.y + vy * 0.005;
+          const normalizedVelocity = Math.min(speed / maxSpeed, 1);
+          const pushStrength = normalizedVelocity * 50;
+          const direction = Math.atan2(vy, vx);
+          const pushX = Math.cos(direction) * pushStrength;
+          const pushY = Math.sin(direction) * pushStrength;
+
+          // Simulate inertia with custom physics
           gsap.to(dot, {
-            inertia: { xOffset: pushX, yOffset: pushY, resistance },
+            xOffset: pushX,
+            yOffset: pushY,
+            duration: 0.6,
+            ease: "power2.out",
             onComplete: () => {
               gsap.to(dot, {
                 xOffset: 0,
