@@ -144,12 +144,6 @@ const DotGrid: React.FC<DotGridProps> = ({
       for (const dot of dotsRef.current) {
         const ox = dot.cx + dot.xOffset;
         const oy = dot.cy + dot.yOffset;
-
-        // Skip dots that are in exclusion zones
-        if (isInExclusionZone(ox, oy)) {
-          continue;
-        }
-
         const dx = dot.cx - px;
         const dy = dot.cy - py;
         const dsq = dx * dx + dy * dy;
