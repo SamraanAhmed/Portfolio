@@ -84,6 +84,8 @@ export default function Index() {
             shockStrength={5}
             resistance={750}
             returnDuration={1.5}
+            repelSelector="h1, h2, h3, .text-5xl, .text-2xl, .text-xl, button, .group, p"
+            repelStrength={40}
           />
         </div>
         {/* HeroSection content above */}
