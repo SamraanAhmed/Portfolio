@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Download, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import DotGrid from "@/components/ui/DotGrid";
 
 export function HeroSection() {
   return (
