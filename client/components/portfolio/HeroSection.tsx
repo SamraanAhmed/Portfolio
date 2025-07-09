@@ -50,7 +50,7 @@ export function HeroSection() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="bg-background/60 backdrop-blur-sm rounded-xl p-6 shadow-md border border-border/30">
+          <div className="bg-background/25 backdrop-blur-sm rounded-xl p-6 shadow-md border border-border/20">
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button
                 asChild
