@@ -84,6 +84,7 @@ export default function Index() {
             shockStrength={5}
             resistance={750}
             returnDuration={1.5}
+            exclusionSelector="h1, h2, h3, .text-5xl, .text-2xl, .text-xl, button, .group, p"
           />
         </div>
         {/* HeroSection content above */}
