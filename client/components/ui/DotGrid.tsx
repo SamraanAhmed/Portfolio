@@ -63,6 +63,8 @@ const DotGrid: React.FC<DotGridProps> = ({
   returnDuration = 1.5,
   className = "",
   style,
+  repelSelector = "",
+  repelStrength = 30,
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
