@@ -213,7 +213,7 @@ const DotGrid: React.FC<DotGridProps> = ({
 
     draw();
     return () => cancelAnimationFrame(rafId);
-  }, [proximity, baseColor, activeRgb, baseRgb, circlePath]);
+  }, [proximity, baseColor, activeRgb, baseRgb, circlePath, isInExclusionZone]);
 
   useEffect(() => {
     buildGrid();
