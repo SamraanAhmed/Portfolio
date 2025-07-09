@@ -61,33 +61,9 @@ const coreSkills = [
 export default function Index() {
   return (
     <Layout>
-      <div style={{ position: "relative", width: "100%", minHeight: "600px" }}>
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            zIndex: 0,
-            pointerEvents: "none",
-          }}
-        >
-          <DotGrid
-            dotSize={10}
-            gap={15}
-            baseColor="#0080FF"
-            activeColor="#0080FF"
-            proximity={120}
-            shockRadius={250}
-            shockStrength={5}
-            resistance={750}
-            returnDuration={1.5}
-          />
-        </div>
-        <div style={{ position: "relative", zIndex: 1 }}>
-          <HeroSection />
-        </div>
-      </div>
+      {/* Hero Section without DotGrid BG */}
+      <HeroSection />
+
       {/* About Me Section */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

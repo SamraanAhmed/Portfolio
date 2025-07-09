@@ -73,14 +73,15 @@ export default function Skills() {
             </p>
           </div>
 
-          <div style={{ height: "600px", position: "relative" }}>
+          {/* Circular Gallery */}
+          {/* <div style={{ height: "600px", position: "relative" }}>
             <CircularGallery
               bend={0}
               textColor="#ffffff"
               borderRadius={0.05}
               scrollEase={0.02}
             />
-          </div>
+          </div> */}
           {/* Skills Grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
             {skills.map((skill) => (
