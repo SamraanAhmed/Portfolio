@@ -62,6 +62,7 @@ const DotGrid: React.FC<DotGridProps> = ({
   returnDuration = 1.5,
   className = "",
   style,
+  exclusionSelector = "",
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
